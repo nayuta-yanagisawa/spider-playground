@@ -5,7 +5,7 @@ x-var: &image
 x-var: &common
     environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: spider_db
+        MYSQL_DATABASE: test
 
 services:
     spider_node:
