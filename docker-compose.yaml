@@ -1,0 +1,19 @@
+version: '3.7'
+
+x-var: &image
+    mariadb:10.4
+x-var: &common
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: spider_db
+
+services:
+    spider_node:
+        build: .
+        <<: *common
+    data_node1:
+        image: *image
+        <<: *common
+    data_node2:
+        image: *image
+        <<: *common
