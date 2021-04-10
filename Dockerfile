@@ -13,3 +13,6 @@ RUN apt-get update -qq && apt-get install -yqq \
 
 # Install Spider storage engine
 RUN cp /usr/share/mysql/install_spider.sql docker-entrypoint-initdb.d/
+
+# Register data nodes
+COPY create_server.sql docker-entrypoint-initdb.d/
