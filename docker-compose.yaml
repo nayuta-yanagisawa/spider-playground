@@ -1,6 +1,6 @@
 version: '3.7'
 
-x-var: &image
+x-var: &data_node_image
     mariadb:10.4
 x-var: &common
     environment:
@@ -14,9 +14,9 @@ services:
         <<: *common
     data_node1:
         container_name: data_node1
-        image: *image
+        image: *data_node_image
         <<: *common
     data_node2:
         container_name: data_node2
-        image: *image
+        image: *data_node_image
         <<: *common
