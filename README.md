@@ -16,6 +16,10 @@ IMAGE_TAG=10.3 docker-compose up -d --build
 # TODO: Make it possible to specify a minor version.
 # Under the current setting, specifying a minor version doesn't make sense because
 # the mariadb-pluin-spider package determines the version of the Spider node.
+
+# TODO: Make it possible to run 10.5 and 10.6
+# MariaDB 10.5 and 10.6 fail to start after the mariadb-plugin-spider is installed.
+# The issue is possibly related to https://jira.mariadb.org/browse/MDEV-22979.
 ```
 
 ```bash
