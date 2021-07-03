@@ -1,7 +1,5 @@
 version: '3.7'
 
-x-var: &data_node_image
-    mariadb:10.4
 x-var: &common
     environment:
         MYSQL_ROOT_PASSWORD: root
@@ -10,13 +8,17 @@ x-var: &common
 services:
     spider_node:
         container_name: spider_node
-        build: .
+        build:
+            context: .
+            args:
+                IMAGE_TAG: "${IMAGE_TAG}"
+        image: "mariadb-spider:${IMAGE_TAG}"
         <<: *common
     data_node1:
         container_name: data_node1
-        image: *data_node_image
+        image: "mariadb:${IMAGE_TAG}"
         <<: *common
     data_node2:
         container_name: data_node2
-        image: *data_node_image
+        image: "mariadb:${IMAGE_TAG}"
         <<: *common
