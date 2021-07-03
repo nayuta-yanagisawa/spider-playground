@@ -5,9 +5,20 @@ spider-playground launches Docker containers for playing with the Spider storage
 ## Usage
 
 ```bash
-# Run Spider cluster
-docker-compose up -d
+# Run Spider cluster using latest image
+docker-compose up -d --build
+```
 
+```bash
+# Run Spider cluster of specific version
+IMAGE_TAG=10.3 docker-compose up -d --build
+
+# TODO: Make it possible to specify a minor version.
+# Under the current setting, specifying a minor version doesn't make sense because
+# the mariadb-pluin-spider package determines the version of the Spider node.
+```
+
+```bash
 # Connect to Spider node
 docker exec -it spider_node mysql -uroot -proot
 
@@ -17,6 +28,11 @@ docker exec -it data_node2 mysql -uroot -proot
 ```
 
 ## Example
+
+```sql
+# spider_node
+SELECT ENGINE, SUPPORT FROM information_schema.ENGINES WHERE ENGINE = 'SPIDER';
+```
 
 ```sql
 # spider_node
